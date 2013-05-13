@@ -5,3 +5,6 @@ Template.postItem.domain = function() {
 	return a.hostname;
 		//a = full URL, hostname property abridges it
 };
+Template.postItem.ownPost = function(){
+	return this.userId === Meteor.userId();
+}
