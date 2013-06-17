@@ -1,0 +1,1 @@
+mymicroscope.meteor.com

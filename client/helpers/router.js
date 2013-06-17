@@ -12,14 +12,18 @@ Meteor.Router.add({
 });
 
 Meteor.Router.filters({
-	'requireLogin': function(page) {
-		if (Meteor.user())
-			return page;
-		else if (Meteor.loggingIn())
-			return 'loading';
-		else
-			return 'accessDenied'
-	}
+  'requireLogin': function(page) {
+    if (Meteor.user())
+      return page;
+    else if (Meteor.loggingIn())
+      return 'loading';
+    else
+      return 'accessDenied';
+  },
+  'clearErrors': function(page) {
+    clearErrors();
+    return page;
+  }
 });
-
 Meteor.Router.filter('requireLogin', {only: 'postSubmit'});
+Meteor.Router.filter('clearErrors');

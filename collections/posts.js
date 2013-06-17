@@ -3,6 +3,13 @@ Posts.allow({
   update: ownsDocument,
   remove: ownsDocument
 });
+Posts.deny({
+  update: function(userId, post, fieldNames){
+    return (_.without(fieldNames, 'url', 'title').length > 0);
+    //if returned field is +1, return false and do not allow
+  }
+})
+
 
 
 
